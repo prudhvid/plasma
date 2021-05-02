@@ -5,6 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 
 function Donor() {
+  const pincode = "";
   return(
     <Container>
       <Alert variant="success">
@@ -13,6 +14,9 @@ function Donor() {
         </Alert.Heading>
       </Alert>
     
+    <label>Search Patients by Pincode: </label>
+    <input value={pincode} placeholder={"pincode"}/>
+    <br/>
       <Alert variant="info">
         <Alert.Heading>Patients in your area</Alert.Heading>
         {patients.map((patient) => 
