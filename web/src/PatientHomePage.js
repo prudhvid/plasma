@@ -5,21 +5,30 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 
+function IsActive() {
+  return patientInfo.status === "Active";
+}
+
 function PatientHomePage() {
   return(
     <Container>
-      <Alert variant="danger">
-      Info: We will turn off matching for you if you do not check in with the
-      page in 24hrs, assuming you are no longer searching for plasma. Don’t
-      worry, we will send you a message which you can click to reactivate
-      searching
-      </Alert>
+      {IsActive() &&
+        <Alert variant="danger">
+        Info: We will turn off matching for you if you do not check in with the
+        page in 24hrs, assuming you are no longer searching for plasma. Don’t
+        worry, we will send you a message which you can click to reactivate
+        searching
+        </Alert>
+      }
 
-      <Alert variant="success">
+      <Alert variant={IsActive() ? "success" : "dark"}>
         <Alert.Heading>
           Your status is {patientInfo.status}
         </Alert.Heading>
-        We have shown your details to {patientInfo.donorsSeen} donors who have signed up
+        {IsActive() &&
+          <p> We have shown your details to {patientInfo.donorsSeen} donors 
+          who have signed up </p>
+        }
       </Alert>
       <Alert variant="info">
         <Alert.Heading>Your Requirements</Alert.Heading>
@@ -34,9 +43,11 @@ function PatientHomePage() {
       <Button variant="danger">
         I no longer require plasma
       </Button>
-      <Button variant="success">
-        Have coordinated with donor for plasma
-      </Button>
+      {IsActive() &&
+        <Button variant="success">
+          Have coordinated with donor for plasma
+        </Button>
+      }
       <Button variant="info">
         Upload Document Proof
       </Button>
@@ -45,7 +56,7 @@ function PatientHomePage() {
 }
 
 const patientInfo = {
-  status: "Active",
+  status: "Inactive",
   donorsSeen: 4,
   firstName: "Naman",
   lastName: "Mirtuka",

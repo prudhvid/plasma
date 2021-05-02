@@ -18,8 +18,8 @@ export default function App() {
           <Route path="/patient">
             <PatientHomePage />
           </Route>
-          <Route path="">
-            <Donor />
+          <Route path="/signup">
+            <PatientSignUp />
           </Route>
         </Switch>
       </div>
