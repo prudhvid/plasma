@@ -1,7 +1,9 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Donor from "./Donor";
 import PatientSignUp from "./PatientSignUp";
+import PatientHomePage from './PatientHomePage';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -14,7 +16,7 @@ export default function App() {
             <Donor />
           </Route>
           <Route path="/patient">
-            <PatientSignUp />
+            <PatientHomePage />
           </Route>
           <Route path="">
             <Donor />
